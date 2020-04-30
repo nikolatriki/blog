@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
   def index
-    @message = 'Hello, how are you today?'
+    @articles = Article.all
+  end
+
+  def show
+    @article = Article.find(params[:id])
   end
 end

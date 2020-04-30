@@ -1,5 +1,7 @@
 <h1>Hello Rails!</h1>
-    <p>My first web app<p>
-    <p>
-    Greeting: <%= @message %>
-    </p>
+<ul>
+  <% @articles.each do |article|%>
+  <li><%= article.body%></li>
+  <% end %>
+</ul>
+
