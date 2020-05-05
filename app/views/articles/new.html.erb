@@ -1,0 +1,34 @@
+<h1>New Article</h1>
+
+<%# So Rails sintaksa%>
+<%= form_with scope: :article, url: '/articles', local: true do |form| %>
+<p>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+</p>
+
+<p>
+  <%= form.label :body %>
+  <%= form.text_area :body %>
+</p>
+
+<%= form.submit 'Save article' %>
+<% end %>
+
+<%# So HTML sintaksa
+<%# <form action="/articles" method="post">
+  <p>
+  <label for="title">Title:</label><br>
+  <input type="text" id="title" name="title">
+  </p>
+
+  <p>
+  <label for="body">Body:</label><br>
+  <textarea id="body" name="body"></textarea>
+  </p>
+
+  <p>
+  <input type="submit" value="Save article">
+
+</form> %>
+

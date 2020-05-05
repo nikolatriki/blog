@@ -1,7 +1,15 @@
-<h1>Hello Rails!</h1>
+<h1>Articles</h1>
+<p>
+  <%= link_to 'Create New Article', newarticle_path %>
+</p>
 <ul>
   <% @articles.each do |article|%>
-  <li><%= article.body%></li>
+  <li>
+    <%= link_to article.title, article_path(article) %>
+  </li>
   <% end %>
 </ul>
+<p>
+  <%# <a href="/articles/new">New post</a> %>
+</p>
 
