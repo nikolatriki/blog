@@ -1,4 +1,4 @@
-<h1>New Article</h1>
+<h1>Edit Article</h1>
 
 <%# So Rails sintaksa%>
 <% if @article.errors.any? %>
@@ -25,7 +25,10 @@
   <%= form.text_area :body %>
 </p>
 
-<%= form.submit 'Save article' %>
+<%= form.submit 'Update article' %>
+<p>
+<%= link_to 'Back', root_path %>
+</p>
 <% end %>
 
 <%# So HTML sintaksa
