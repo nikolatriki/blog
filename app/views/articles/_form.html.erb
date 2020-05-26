@@ -1,26 +1,59 @@
-<% if article.errors.any? %>
-<div id="error explanation">
-  <h2>
-    <%= pluralize(article.errors.count, 'error') %> prohibited this Article from being saved:
-  </h2>
-  <ul>
-    <% article.errors.full_messages.each do |elem|%>
-      <li><%= elem %></li>
+<%
+if article.persisted?
+  cancel_path = article_path(article)
+else
+  cancel_path = root_path
+end
+%>
+
+<div class="container">
+  <div class="columns is-multiline">
+   <% if article.errors.any? %>
+    <div class="column is-6 is-offset-3">
+      <article class="message is-danger">
+        <div class="message-body">
+          <p>
+            <%= pluralize(article.errors.count, 'error') %> prohibited this Article from being saved:
+          </p><br>
+            <% article.errors.full_messages.each do |elem|%>
+            <li><%= elem %></li>
+          <% end %>
+        </div>
+      </article>
+    </div>
     <% end %>
-  </ul>
+    <div class="column is-6 is-offset-3">
+      <div class="content">
+        <h1><%= heading %></h1>
+      </div>
+    </div>
+
+    <div class="column is-6 is-offset-3">
+      <%= form_with model: article, local: true do |form| %>
+        <div class="field">
+          <%= form.label :title, class: "label"  %>
+          <div class="control">
+            <%= form.text_field :title, class: "input", placeholder: "Title here"  %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= form.label :body, class: "label" %>
+          <div class="control">
+             <%= form.text_area :body, class: "textarea", placeholder: "Message here"  %>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <%= form.submit submit, class: "button is-link"  %>
+          </div>
+          <div class="control">
+            <%= link_to 'Cancel', cancel_path, class: "button is-link is-light" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-<% end %>
 
-<%= form_with model: article, local: true do |form| %>
-<p>
-  <%= form.label :title %><br>
-  <%= form.text_field :title %>
-</p>
-
-<p>
-  <%= form.label :body %><br>
-  <%= form.text_area :body %>
-</p>
-
-<%= form.submit submit %>
-<% end %>
