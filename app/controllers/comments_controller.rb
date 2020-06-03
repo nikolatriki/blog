@@ -15,6 +15,12 @@ class CommentsController < ApplicationController
     redirect_to comment.article
   end
 
+  def edit
+    @comment = Comment.find(params[:id])
+    # @article = Article.find(params[:article_id])
+    @article = @comment.article
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:commenter, :body)
