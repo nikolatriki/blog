@@ -1,26 +1,56 @@
-<div class="column is-6 is-offset-3">
-  <article class="media">
-      <div class="media-content">
-        <%= form_with model: [article, comment], local: true do |form| %>
-          <div class="field">
-              <p class="control">
-                <%= form.text_field :commenter, class: "input", placeholder: "Commenter.."  %>
-              </p>
-            </div>
-            <div class="field">
-              <p class="control">
-                <%= form.text_area :body, class: "textarea", placeholder: "Add a comment..." %>
-              </p>
-            </div>
-            <nav class="level">
-              <div class="level-left">
-                <div class="level-item">
-                  <%= form.submit "Comment", class: "button-is-info" %>
-                </div>
-              </div>
-            </nav>
-          </div>
-        <% end %>
+<div class="container">
+  <div class="columns is-multiline">
+    <div class="column is-6 is-offset-3">
+      <div class="content">
+        <h1><%= article.title %><%= heading %></h1>
       </div>
-  </article>
+    </div>
+
+    <% if comment.errors.any? %>
+      <div class="column is-6 is-offset-3">
+        <article class="message is-danger">
+          <div class="message-body">
+            <p>
+              <%= pluralize(comment.errors.count, 'error') %> prohibited this comment from being saved:
+            </p><br>
+              <% comment.errors.full_messages.each do |message|%>
+              <li><%= message %></li>
+            <% end %>
+          </div>
+        </article>
+      </div>
+    <% end %>
+
+    <div class="column is-6 is-offset-3">
+      <article class="media">
+          <div class="media-content">
+            <%= form_with model: [article, comment], local: true do |form| %>
+              <div class="field">
+                  <%= form.label :commenter, class: "label"  %>
+                  <p class="control">
+                    <%= form.text_field :commenter, class: "input", placeholder: "Commenter.."  %>
+                  </p>
+                </div>
+                <div class="field">
+                  <%= form.label :body, class: "label"  %>
+                  <p class="control">
+                    <%= form.text_area :body, class: "textarea", placeholder: "Add a comment..." %>
+                  </p>
+                </div>
+                <nav class="level">
+                  <div class="level-left">
+                    <div class="level-item">
+                      <%= form.submit submit, class: "button-is-info" %>
+                    </div>
+                    <div class="level-item">
+                      <%= link_to 'Cancel', article_path(article), class: "button-is-light" %>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            <% end %>
+          </div>
+      </article>
+    </div>
+  </div>
 </div>
