@@ -3,16 +3,23 @@
   <div class="card">
   <% unless local_assigns[:show] %>
     <header class="card-header">
-      <p class="card-header-title">
-        <%= article.title %>
-      </p>
+      <p class="card-header-title"><%= article.title %></p>
+      <p class="has-text-weight-light">Comments (<%= article.comments.count %>)</p>
     </header>
   <% end %>
+  <% if local_assigns[:show]%>
     <div class="card-content">
       <div class="content">
         <%= article.body %>
       </div>
     </div>
+    <% else %>
+    <div class="card-content">
+      <div class="content">
+        <%= article.body.truncate(70) %>
+      </div>
+    </div>
+    <% end %>
     <footer class="card-footer">
     <% if local_assigns[:show]%>
       <%= link_to "New comment", new_article_comment_path(article), class: "card-footer-item" %>
