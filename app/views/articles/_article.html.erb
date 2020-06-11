@@ -4,7 +4,7 @@
   <% unless local_assigns[:show] %>
     <header class="card-header">
       <p class="card-header-title"><%= article.title %></p>
-      <p class="has-text-weight-light">Comments (<%= article.comments.count %>)</p>
+      <p class="card-header-title has-text-weight-light">Comments (<%= article.comments.count %>)</p>
     </header>
   <% end %>
   <% if local_assigns[:show]%>
