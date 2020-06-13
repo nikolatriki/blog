@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="columns is-multiline">
+    <div class="column is-6 is-offset-3">
+      <div class="content">
+        <h1>New user</h1>
+      </div>
+    </div>
+
+    <div class="column is-6 is-offset-3">
+      <%= form_with model: @user, local: true do |form| %>
+        <div class="field">
+          <%= form.label :name, class: "label"  %>
+          <div class="control">
+            <%= form.text_field :name, class: "input", placeholder: "Name here"  %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= form.label :email, class: "label" %>
+          <div class="control">
+             <%= form.email_field :email, class: "input", placeholder: "Email here"  %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= form.label :password, class: "label" %>
+          <div class="control">
+             <%= form.password_field :email, class: "input", placeholder: "Password here"  %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= form.label :password_confirmation, class: "label" %>
+          <div class="control">
+             <%= form.password_field :email, class: "input", placeholder: "Confirm here"  %>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <%= form.submit 'submit', class: "button is-link"  %>
+          </div>
+          <div class="control">
+            <%= link_to 'Cancel', articles_path, class: "button is-link is-light" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
