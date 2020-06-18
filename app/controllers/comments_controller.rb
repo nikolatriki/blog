@@ -31,10 +31,10 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params['id'])
-    @article = Article.find(params['article_id'])
+    # @article = Article.find(params['article_id'])
 
     if @comment.update(comment_params)
-      redirect_to @article
+      redirect_to @comment.article
     else
       render :new
     end
