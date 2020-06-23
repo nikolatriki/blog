@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+    logged_in_notice if logged_in?
     @user = User.new
   end
 
@@ -7,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      log_in(user)
       redirect_to @user
     else
       render :new
@@ -14,7 +16,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    redirect_to articles_path
   end
 
   private
