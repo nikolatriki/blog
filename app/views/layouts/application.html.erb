@@ -15,5 +15,9 @@
     <%= render "shared/flash" %>
     <%= yield %>
    </section>
+
+   <% if logged_in? %>
+    <%= current_user.email %>
+   <% end %>
   </body>
 </html>

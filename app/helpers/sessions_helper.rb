@@ -13,15 +13,17 @@ module SessionsHelper
     current_user.present?
   end
 
-
   def log_out
     session.delete(:user_id)
     @current_user = nil
   end
 
-  def logged_in_notice
-    if logged_in?
-      redirect_to root_path, alert: 'You are already in'
-    end
+  def session_notice(type, message)
+    flash[type.to_sym] = message
+    redirect_to root_path
+  end
+
+  def equal_with_current_user?(other_user)
+    current_user == other_user
   end
 end
