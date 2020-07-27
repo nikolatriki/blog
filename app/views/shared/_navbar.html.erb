@@ -17,7 +17,7 @@
           <div class="buttons">
             <% if logged_in? %>
               <%= link_to 'New Article', new_article_path, class: "button is-primary has-text-weight-bold" %>
-              <%= link_to 'Logout', logout_path, method: :delete, class: "button is-primary has-text-weight-bold" %>
+              <%= link_to 'Log out', logout_path, method: :delete, class: "button is-primary has-text-weight-bold" %>
             <%else%>
               <%= link_to 'Log in', login_path, class: "button is-primary has-text-weight-bold"%>
               <%= link_to 'Sign up', users_signup_path, class: "button is-primary has-text-weight-bold" %>
