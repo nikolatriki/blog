@@ -46,7 +46,6 @@ class ArticlesController < ApplicationController
 
   def destroy
     # session_notice(:danger, 'You must be logged in!') unless logged_in?
-
     article = Article.find(params[:id])
     # session_notice(:danger, 'Wrong user!') unless equal_with_current_user?(article.user)
 
@@ -54,6 +53,7 @@ class ArticlesController < ApplicationController
 
     redirect_to articles_path
   end
+
   private
 
   def article_params
